@@ -2,7 +2,7 @@
 
 [![ci](https://github.com/fluentci-io/sqlfluff-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/fluentci-io/sqlfluff-plugin/actions/workflows/ci.yml)
 
-This plugin sets up your CI/CD pipeline with a specific version of [sqlfluff](https://www.sqlfluff.com/).
+This plugin sets up [sqlfluff](https://www.sqlfluff.com/) in your CI/CD pipeline.
 
 ## 🚀 Usage
 
