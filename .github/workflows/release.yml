@@ -1,0 +1,31 @@
+name: release
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: fluentci-io/setup-fluentci@v5
+        with:
+          wasm: true
+          plugin: rust
+          args: |
+            target_add wasm32-unknown-unknown
+            build --target wasm32-unknown-unknown --release
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Generate checksum
+        run: |
+          sha256sum target/wasm32-unknown-unknown/release/sqlfluff.wasm > target/wasm32-unknown-unknown/release/sqlfluff.wasm.sha256
+      - name: Upload release assets
+        run: |
+          for ext in wasm wasm.sha256; do
+            export FILE=target/wasm32-unknown-unknown/release/sqlfluff.$ext
+            fluentci run --wasm github release_upload $TAG $FILE
+          done
+        env:
+          TAG: ${{ env.RELEASE_VERSION }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
