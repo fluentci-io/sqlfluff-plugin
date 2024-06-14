@@ -4,7 +4,7 @@ use fluentci_pdk::dag;
 #[plugin_fn]
 pub fn setup() -> FnResult<String> {
     let stdout = dag().call(
-        "https://pkg.fluentci.io/rye@v0.1.0?wasm=1",
+        "https://pkg.fluentci.io/rye@v0.1.1?wasm=1",
         "tools",
         vec!["install", "sqlfluff"],
     )?;

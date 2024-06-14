@@ -1,8 +1,8 @@
 [package]
-name = "sqlfluff"
-version = "0.1.0"
+authors = [
+  "Tsiry Sandratraina <tsiry.sndr@fluentci.io>",
+]
 description = "CI/CD Plugin for Sqlfluff"
 license = "MIT"
-authors = [
-  "Tsiry Sandratraina <tsiry.sndr@fluentci.io>"
-]
+name = "sqlfluff"
+version = "0.1.1"
