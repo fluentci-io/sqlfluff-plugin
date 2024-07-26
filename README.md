@@ -54,7 +54,6 @@ Github Actions:
       setup
 - name: Show sqlfluff version
   run: |
-    export PATH=${HOME}/.rye/shims:${PATH} 
     type sqlfluff
     sqlfluff --version
 ```
